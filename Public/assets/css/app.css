@@ -1,0 +1,12 @@
+.badge {
+    font-size: 12px;
+    background: green;
+    padding: 1px 10px;
+    border-radius: 16px;
+    color: white;
+    font-family: 'arial';
+    font-weight: 100;
+    display: inline-block;
+    position: relative;
+    bottom: 17px;
+}
