@@ -5,12 +5,13 @@ namespace Core;
 Abstract class AbstractController 
 
 {
-    protected string $modelName;
-    protected $model;
-    protected $controller;
+    protected string $modelName = "";
+    protected $model = "";
 
     public function __construct()
     {
-        $this->model = new $this->modelName();
+        if (!empty($this->modelName)) {
+            $this->model = new $this->modelName();
+        }
     }
 }

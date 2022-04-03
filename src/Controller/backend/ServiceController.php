@@ -2,8 +2,6 @@
 
 namespace App\Controller\Backend;
 
-use App\Controller\Backend\BackendController;
-
 class ServiceController extends BackendController
 {
     public function lists($request)

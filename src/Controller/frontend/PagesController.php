@@ -2,13 +2,15 @@
 
 namespace App\Controller\Frontend;
 
-use App\Controller\Frontend\FrontendController;
-
 class PagesController extends FrontendController
 {
     public function home($request)
     {
-        $this->render('home',$request);
+        $name = 'teste';
+        $this->render('home',[
+            'request' => $request,
+            'name' => $name
+        ]);
     }
     public function about($request)
     {

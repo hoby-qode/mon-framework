@@ -1,5 +1,6 @@
 <?php
 
+use Core\Framework\Router;
 use Symfony\Component\Dotenv\Dotenv;
 
 define('DS',DIRECTORY_SEPARATOR);
@@ -15,10 +16,9 @@ define('FOLDER_VENDOR',RACINE.'vendor'.DS);
 
 require FOLDER_VENDOR."autoload.php";
 require FOLDER_VENDOR.'/symfony/dotenv/Dotenv.php';
-require FOLDER_CORE."Utils.php";
 
 $dotenv = new Dotenv();
 $dotenv->load(FOLDER_CONFIG.'.env');
 
-\Core\router\Router::run();
+Router::run();
 

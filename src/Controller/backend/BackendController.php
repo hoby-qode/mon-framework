@@ -6,10 +6,11 @@ use Core\AbstractController;
 
 class BackendController extends AbstractController
 {
-    public function render( $path, array $variables = [] ) :void
+    public function render( $path, $variables ) :void
     {
-        extract($variables);
-
+        if (is_array($variables)) {
+            extract($variables);
+        }
         ob_start();
         require(FOLDER_VIEW.'/backend/'.$path.'.html.php');
         $pageContent = ob_get_clean();
