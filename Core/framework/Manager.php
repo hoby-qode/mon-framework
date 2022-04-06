@@ -1,47 +1,34 @@
 <?php
 
-use Core\Utils;
 
+namespace Core\Framework;
 
-class Request
+use Config\DataBase;
+use Symfony\Component\HttpFoundation\Request;
+
+class Manager
 {
-    private ?array $request;
+    /**
+     *
+     * @param DataBase $db
+     */
+
     public function __construct()
     {
-        $this->request = $this->request();
-        $this->pdo     = Utils::bdd();
-    }
-
-    public function request() {
-        $request = null;
-        if (isset($_REQUEST)) {
-            $request = $_REQUEST;
-        }
-        return $request;
-    }
-
-    public function securiseData( $data ) {
-        if ($data) {
-            $donneeSecuriser = [];
-            foreach ($data as $key => $value ) {
-                $donneeSecuriser [$key] = htmlentities($value);
-            }
-            return $donneeSecuriser;
-        }else {
-            return false;
-        }
+        $this->pdo  = (new DataBase)->bdd() ;
     }
     /**
      * Ajout des données dans BD
      *
+     * @param $table
+     * @param $donneeSecuriser | donnée déjà traiter dans le fonction securiseData()
      * @return bool
-     * @param $donneeSecuriser donnée déjà traiter dans le fonction securiseData()
      */
-    public function insertTo( $table, $donneeSecuriser ):bool {
+    public function insertTo( $table, $data ):bool {
         $identifiant = [];
         $values = [];
         $dataToExecute = [];
-        foreach ($donneeSecuriser as $k => $v) {
+        foreach ($data as $k => $v) {
             $identifiant[] = $k;
             $values[] = ":$k";
             $dataToExecute[":$k"] = $v;
@@ -59,11 +46,10 @@ class Request
      * Mise à jour des données dans BD
      *
      * @return bool
-     * @param $donneeSecuriser donnée déjà traiter dans le fonction securiseData()
      */
-    public function updateTo( $table, $id, $donneeSecuriser ):bool {
+    public function updateTo( $table, $id, $data ):bool {
         $dataToExecute = [];
-        foreach ($donneeSecuriser as $k => $v) {
+        foreach ($data as $k => $v) {
             $set[] = "$k = :$k";
             $dataToExecute[":$k"] = $v;
         }
@@ -77,14 +63,13 @@ class Request
         }
     }
     /**
-     * Suppréssion
+     * Suppréssion 
      *
      * @return bool
-     * @param $donneeSecuriser | donnée déjà traiter dans le fonction securiseData()
      */
-    public function delete( $table, $id, $donneeSecuriser ):bool {
+    public function delete( $table, $id, $data ):bool {
         $dataToExecute = [];
-        foreach ($donneeSecuriser as $k => $v) {
+        foreach ($data as $k => $v) {
             $set[] = "$k = :$k";
             $dataToExecute[":$k"] = $v;
         }

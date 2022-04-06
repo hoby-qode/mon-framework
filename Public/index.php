@@ -1,6 +1,7 @@
 <?php
 
 use Core\Framework\Router;
+use DI\ContainerBuilder;
 use Symfony\Component\Dotenv\Dotenv;
 
 define('DS',DIRECTORY_SEPARATOR);
@@ -20,5 +21,8 @@ require FOLDER_VENDOR.'/symfony/dotenv/Dotenv.php';
 $dotenv = new Dotenv();
 $dotenv->load(FOLDER_CONFIG.'.env');
 
-Router::run();
-
+$builder = new ContainerBuilder();
+$builder->useAutowiring(true);
+$builder->addDefinitions(FOLDER_CONFIG.'config.php');
+$container = $builder->build();
+Router::run($container);

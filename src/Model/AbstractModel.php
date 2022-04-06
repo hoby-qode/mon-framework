@@ -2,14 +2,15 @@
 
 namespace App\Model;
 
+
 use Config\DataBase;
 
 abstract class AbstractModel {
 
-    private \PDO $pdo;
+    private $pdo;
 
     public function __construct() {
-        $this->pdo = DataBase::bdd();
+        $this->pdo = (new \Config\DataBase)->bdd();
     }
     public function findAll(string $order="") {
         $sql = "SELECT * FROM {$this->table}";
@@ -21,7 +22,6 @@ abstract class AbstractModel {
     }
 
     public function find( $param) {
-        dump($param);
         if (isset($param)) {
             if (is_numeric($param)) {
                 $request = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE  id =  ? LIMIT 0,1");
@@ -41,6 +41,4 @@ abstract class AbstractModel {
         $request = $this->pdo->query("SELECT MAX(id) as id FROM {$this->table} ");
         return $request->fetch();
     }
-  
-  
 }

@@ -14,6 +14,7 @@ class PagesController extends FrontendController
     }
     public function about($request)
     {
+        dump($request);
     }
     public function contact($request)
     {

@@ -1,9 +1,8 @@
 <?php 
 
-namespace Core;
+namespace Core\Framework;
 
 Abstract class AbstractController 
-
 {
     protected string $modelName = "";
     protected $model = "";
@@ -14,4 +13,5 @@ Abstract class AbstractController
             $this->model = new $this->modelName();
         }
     }
+
 }

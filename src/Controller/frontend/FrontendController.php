@@ -2,7 +2,7 @@
 
 namespace App\Controller\Frontend;
 
-use Core\AbstractController;
+use Core\Framework\AbstractController;
 
 class FrontendController extends AbstractController
 {

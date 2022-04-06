@@ -19,7 +19,9 @@
         "psr/container": "^2.0",
         "easybook/slugger": "1.*",
         "symfony/dotenv": "4.4.*",
-        "symfony/http-foundation": "^5.4"
+        "symfony/http-foundation": "^5.4",
+        "formr/formr": "^1.4",
+        "php-di/php-di": "*"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.2",

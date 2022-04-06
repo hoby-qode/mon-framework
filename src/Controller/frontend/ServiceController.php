@@ -2,11 +2,10 @@
 
 namespace App\Controller\Frontend;
 
-use App\Controller\Frontend\FrontendController;
 use App\Entity\Service as ServiceEntity;
 use App\Model\Service;
 
-class ServiceController extends FrontendController
+class  ServiceController extends FrontendController
 {
     protected string $modelName = Service::class;
     protected string $entitiesName = ServiceEntity::class;

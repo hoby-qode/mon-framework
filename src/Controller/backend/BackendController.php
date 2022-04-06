@@ -2,7 +2,7 @@
 
 namespace App\Controller\Backend;
 
-use Core\AbstractController;
+use Core\Framework\AbstractController;
 
 class BackendController extends AbstractController
 {
