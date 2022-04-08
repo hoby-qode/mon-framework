@@ -21,7 +21,8 @@
         "symfony/dotenv": "4.4.*",
         "symfony/http-foundation": "^5.4",
         "formr/formr": "^1.4",
-        "php-di/php-di": "*"
+        "php-di/php-di": "*",
+        "symfony/cache": "^5.4"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.2",

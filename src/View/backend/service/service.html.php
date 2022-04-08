@@ -11,13 +11,14 @@
             $form->submit_button('Submit Form');
         $form->open();
     }
+    dump($route);
 ?>
 
-<?php
-    if (isset($services) && count($services)) {
-        foreach ($services as $service) {
+<?php if (isset($services) && count($services)) { ?>
+      <div class="row">
+        <?php foreach ($services as $service) {
             include FOLDER_VIEW.'/backend/service/resum-service.html.php';
-        }
-    }
-?>
+        } ?>
+      </div>  
+<?php } ?>
 

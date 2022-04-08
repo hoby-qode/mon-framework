@@ -25,4 +25,4 @@ $builder = new ContainerBuilder();
 $builder->useAutowiring(true);
 $builder->addDefinitions(FOLDER_CONFIG.'config.php');
 $container = $builder->build();
-Router::run($container);
+Router::run();

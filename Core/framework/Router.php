@@ -6,7 +6,7 @@ use App\Controller\Errors;
 use Symfony\Component\HttpFoundation\Request;
 
 class Router {  
-    public static function run($container) {
+    public static function run() {
         // Get all routes from routes.php
         $routes = require FOLDER_CORE . 'routes.php';
 
@@ -19,7 +19,6 @@ class Router {
 
             $controllerResolver = new ControllerResolver();
             $controller = $controllerResolver->getController($route);
-
             call_user_func($controller, $request);
         }else {
             $errors = new Errors();

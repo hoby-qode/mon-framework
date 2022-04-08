@@ -4,13 +4,14 @@ namespace App\Model;
 
 
 use Config\DataBase;
+use Model;
 
 abstract class AbstractModel {
 
     private $pdo;
 
     public function __construct() {
-        $this->pdo = (new \Config\DataBase)->bdd();
+        $this->pdo = (new DataBase)->bdd();
     }
     public function findAll(string $order="") {
         $sql = "SELECT * FROM {$this->table}";
